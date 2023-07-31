@@ -1,0 +1,31 @@
+{
+  "manifest_version": 3,
+  "name": "Roblox Item Sniper",
+  "version": "1.2.1",
+  "description": "Snipe Roblox items easily.",
+  "permissions": [
+    "activeTab",
+    "tabs",
+    "notifications",
+    "storage" 
+  ],
+  "icons": {
+    "48": "icon.png",
+    "128": "icon.png"
+  },
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "host_permissions": [ "*://*.economy.roblox.com/*" ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "all_frames": true,
+      "matches": [ "https://www.roblox.com/catalog/*", "https://web.roblox.com/catalog/*" ],
+      "js": ["content.js"],
+      "run_at": "document_start"
+    }
+  ]
+}
